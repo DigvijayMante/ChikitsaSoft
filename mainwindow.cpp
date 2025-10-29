@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDir>
+#include <qdebug.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,10 +10,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->showMaximized();
 
-    QPixmap pixmap("D:/Qt_Projects/ChikitsaSoft/images/MedicalBackground2.jpg");
-    // ui->label->setScaledContents(true);  // optional
-    ui->label->setPixmap(pixmap.scaled(ui->label->size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+    QString AbsolutePath;
+    QString CurrentDir = QDir::currentPath();
 
+    QFileInfo info(CurrentDir);
+    AbsolutePath = info.absolutePath();
+    AbsolutePath += "/ChikitsaSoft/images/MedicalBackground2.jpg";
+
+    QPixmap pixmap(AbsolutePath);
+    ui->label->setPixmap(pixmap.scaled(ui->label->size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
 
 }
 
