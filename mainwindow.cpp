@@ -19,6 +19,31 @@ MainWindow::MainWindow(QWidget *parent)
 
     QPixmap pixmap(AbsolutePath);
     ui->label->setPixmap(pixmap.scaled(ui->label->size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+<<<<<<< Updated upstream
+=======
+}
+
+QString  MainWindow::getProjectImagePath(const QString &relativePath)
+{
+    QDir dir(QCoreApplication::applicationDirPath());
+
+    // Go up until we find "ChikitsaSoft" or reach drive root
+    while ((dir.dirName().compare("ChikitsaSoft", Qt::CaseInsensitive) != 0) && dir.cdUp())
+    {
+        if (dir.isRoot())
+            break;
+    }
+
+    return dir.filePath(relativePath);
+}
+
+void MainWindow::ConnectMethods()
+{
+    QObject::connect(ui->actionOpenInventory, &QAction::triggered, this, &MainWindow::onInventoryManager_Clicked);
+}
+void MainWindow::onInventoryManager_Clicked()
+{
+>>>>>>> Stashed changes
 
 }
 
