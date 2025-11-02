@@ -7,18 +7,36 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    SetUpUi();
+    ConnectMethods();
+}
+
+void MainWindow::SetUpUi()
+{
     ui->setupUi(this);
     this->showMaximized();
 
-    QString AbsolutePath;
-    QString CurrentDir = QDir::currentPath();
+    QString imagePath = getProjectImagePath("images/MedicalBackground2.jpg");
 
-    QFileInfo info(CurrentDir);
-    AbsolutePath = info.absolutePath();
-    AbsolutePath += "/ChikitsaSoft/images/MedicalBackground2.jpg";
-
-    QPixmap pixmap(AbsolutePath);
+    QPixmap pixmap(imagePath);
     ui->label->setPixmap(pixmap.scaled(ui->label->size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+}
+
+QString  MainWindow::getProjectImagePath(const QString &relativePath)
+{
+    QDir dir(QCoreApplication::applicationDirPath());
+    if (dir.path().contains("build", Qt::CaseInsensitive)) {
+        dir.cdUp(); dir.cdUp(); dir.cdUp();
+    }
+    return dir.filePath(relativePath);
+}
+
+void MainWindow::ConnectMethods()
+{
+    QObject::connect(ui->actionOpenInventory, &QAction::triggered, this, &MainWindow::onInventoryManager_Clicked);
+}
+void MainWindow::onInventoryManager_Clicked()
+{
 
 }
 

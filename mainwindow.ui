@@ -65,6 +65,28 @@
       <number>0</number>
      </property>
      <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="InventoryManager">
+        <attribute name="title">
+         <string>Inventory Manager</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="BillingWindow">
+        <attribute name="title">
+         <string>Billing Window</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="SalesReport">
+        <attribute name="title">
+         <string>Sales Report</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="label">
        <property name="styleSheet">
         <string notr="true"/>
@@ -77,83 +99,12 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1859</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuInventory_Manager">
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>12</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-      <underline>false</underline>
-      <strikeout>false</strikeout>
-      <stylestrategy>PreferDefault</stylestrategy>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="title">
-     <string>Inventory Manager</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuBilling_Window">
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>12</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-      <underline>false</underline>
-      <strikeout>false</strikeout>
-      <stylestrategy>PreferDefault</stylestrategy>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::FocusPolicy::ClickFocus</enum>
-    </property>
-    <property name="tearOffEnabled">
-     <bool>false</bool>
-    </property>
-    <property name="title">
-     <string>Billing Window</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuSales_Report">
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>12</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-      <underline>false</underline>
-      <strikeout>false</strikeout>
-      <stylestrategy>PreferDefault</stylestrategy>
-      <kerning>true</kerning>
-     </font>
-    </property>
-    <property name="title">
-     <string>Sales Report</string>
-    </property>
-    <property name="separatorsCollapsible">
-     <bool>false</bool>
-    </property>
-    <property name="toolTipsVisible">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <addaction name="menuInventory_Manager"/>
-   <addaction name="menuBilling_Window"/>
-   <addaction name="menuSales_Report"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpenInventory">
+   <property name="text">
+    <string>OpenInventory</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
