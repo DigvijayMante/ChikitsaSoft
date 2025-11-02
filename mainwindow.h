@@ -19,5 +19,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void SetUpUi();
+    void ConnectMethods();
+    QString getProjectImagePath(const QString &relativePath);
+
+private slots:
+    void onInventoryManager_Clicked();
 };
 #endif // MAINWINDOW_H
