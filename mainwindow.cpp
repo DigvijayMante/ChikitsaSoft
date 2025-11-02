@@ -25,9 +25,27 @@ void MainWindow::SetUpUi()
 QString  MainWindow::getProjectImagePath(const QString &relativePath)
 {
     QDir dir(QCoreApplication::applicationDirPath());
-    if (dir.path().contains("build", Qt::CaseInsensitive)) {
-        dir.cdUp(); dir.cdUp(); dir.cdUp();
+
+    // Walk up the directory tree
+    while ((dir.dirName().compare("ChikitsaSoft", Qt::CaseInsensitive) != 0) && dir.cdUp())
+    {
+        if (dir.isRoot())
+        {
+            // If we reached root, check if "ChikitsaSoft" exists inside it
+            QDir rootDir(dir);
+            if (rootDir.exists("ChikitsaSoft"))
+            {
+                rootDir.cd("ChikitsaSoft");
+                return rootDir.filePath(relativePath);
+            }
+            else
+            {
+                // Folder not found even in root — stop
+                break;
+            }
+        }
     }
+
     return dir.filePath(relativePath);
 }
 
